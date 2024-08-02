@@ -6,3 +6,5 @@
 <p align="left"> <a href="https://developer.apple.com/swift/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/swift/swift-original.svg" alt="swift" width="40" height="40"/></a> <a href="https://developer.apple.com/swiftui/" target="_blank" rel="noreferrer"> <img src="https://developer.apple.com/assets/elements/icons/swiftui/swiftui-96x96_2x.png" alt="swift" width="40" height="40"/></a><a href="https://firebase.google.com/" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="firebase" width="40" height="40"/></a></p>
 
 <h1>Preview and Functionality</h1>
+
+<img src="https://user-images.githubusercontent.com/61475220/97093903-6d8aee80-166d-11eb-8799-13e119380d2b.jpg" width="50%" align=right>
