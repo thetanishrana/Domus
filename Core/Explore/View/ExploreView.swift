@@ -1,49 +1,48 @@
 //
-//  ExploreView.swift
+//  Search-Filter.swift
 //  Domus
 //
-//  Created by Tanish Rana on 01/05/24.
+//  Created by Tanish Rana on 01/08/24.
 //
 
 import SwiftUI
 
-struct ExploreView: View {
-    @State private var showDestinationSearchView = false
-    @StateObject var viewModel = ExploreViewModel(service: ExploreService())
+struct Search_Filter: View {
+    @Binding var location: String
     
     var body: some View {
-        NavigationStack {
+        HStack {
+            Image(systemName: "magnifyingglass")
             
-            if showDestinationSearchView {
-                DestinationSearchView(show: $showDestinationSearchView, viewModel: viewModel)
-            } else {
-                ScrollView {
-                    Search_Filter(location: $viewModel.searchedLocation)
-                        .onTapGesture {
-                            withAnimation(.snappy) {
-                                showDestinationSearchView.toggle()
-                            }
-                        }
-                    
-                    LazyVStack (spacing: 10) {
-                        ForEach(viewModel.listings) { listing in
-                            NavigationLink(value: listing) {
-                                ListingItemView(listing: listing)
-                                    .frame(height: 450)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                            }
-                        }
-                    }
-                }
-                .navigationDestination(for: Listing.self) { listing in
-                    ListingDetailView(listing: listing)
-                        .navigationBarBackButtonHidden()
-                }
+            VStack(alignment: .leading, spacing: 2) {
+                Text(location.isEmpty ? "Where is home?" : location)
+                    .font(.footnote)
+                    .fontWeight(.semibold)
+                
+                Text(location.isEmpty ? "Anywhere" : "results")
+                    .font(.caption2)
+                    .foregroundStyle(.gray)
             }
+            
+            Spacer()
+            
+            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                Image(systemName: "line.3.horizontal.decrease.circle")
+                    .foregroundStyle(.black)
+            })
         }
+        .padding(.horizontal)
+        .padding(.vertical, 10)
+        .overlay{
+            Capsule()
+                .stroke(lineWidth: 0.5)
+                .foregroundStyle(Color(.systemGray4))
+                .shadow(color: .black.opacity(0.4), radius: 2)
+        }
+        .padding()
     }
 }
 
 #Preview {
-    ExploreView()
+    Search_Filter(location: .constant("Brooklyn"))
 }
