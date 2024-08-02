@@ -1,35 +1,59 @@
 //
-//  ProfileOptionRowView.swift
+//  ProfileView.swift
 //  Domus
 //
-//  Created by Tanish Rana on 01/05/24.
+//  Created by Tanish Rana on 01/08/24.
 //
 
 import SwiftUI
 
-struct ProfileOptionRowView: View {
-    let imageName: String
-    let title: String
-    
+struct ProfileView: View {
     var body: some View {
         VStack {
-            HStack {
-                Image(systemName: imageName)
-                    .fontWeight(.semibold)
+            // Profile Login
+            VStack (alignment: .leading, spacing: 32) {
+                VStack (alignment: .leading, spacing: 8) {
+                    Text("Profile")
+                        .font(.largeTitle)
+                        .fontWeight(.semibold)
+                    
+                    Text("Log in to rent your home")
+                }
                 
-                Text(title)
-                    .font(.subheadline)
+                Button {
+                    print("Log In")
+                } label: {
+                    Text("Log In")
+                        .foregroundStyle(.white)
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                        .frame(width: 360, height: 48)
+                        .background(.red)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                }
                 
-                Spacer()
-                
-                Image(systemName: "chevron.right")
+                HStack {
+                    Text("Don't have an account?")
+                    
+                    Text("Sign Up")
+                        .fontWeight(.semibold)
+                        .underline()
+                }
+                .font(.caption)
             }
             
-            Divider()
+            VStack (spacing: 24) {
+                ProfileOptionRowView(imageName: "gear", title: "Settings")
+                ProfileOptionRowView(imageName: "accessibility", title: "Accessibility")
+                ProfileOptionRowView(imageName: "questionmark.circle", title: "FAQs")
+            }
+            .padding()
         }
+        
+       
     }
 }
 
 #Preview {
-    ProfileOptionRowView(imageName: "gear", title: "Settings")
+    ProfileView()
 }
